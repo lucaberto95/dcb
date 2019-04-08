@@ -18,7 +18,7 @@
 # along with python-telegram-bot-openshift.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-import Updater
+import bot
 from flask import Flask, request
 from telegram import Update
 
