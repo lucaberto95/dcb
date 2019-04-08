@@ -1,4 +1,5 @@
 import logging
+import math
 from telegram.ext import Updater, CommandHandler, MessageHandler, BaseFilter
 import sys
 import os
@@ -82,7 +83,7 @@ def chatID(update, context):
 
 def lanza(update, context):
     global lanzaflex
-    lanzaflex=lanzaflex+2
+    lanzaflex=math.exp(lanzaflex)
     context.message.reply_text("Lanza sta sollevando " + str(lanzaflex) + " kg")
 
 def prato(update, context):
