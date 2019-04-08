@@ -1,5 +1,5 @@
 import logging
-import math
+import random
 from telegram.ext import Updater, CommandHandler, MessageHandler, BaseFilter
 import sys
 import os
@@ -10,6 +10,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 lanzaflex=0
+random.seed(a=None, version=2)
 ammoniti = list()
 
 class FilterLanza(BaseFilter):
@@ -83,7 +84,7 @@ def chatID(update, context):
 
 def lanza(update, context):
     global lanzaflex
-    lanzaflex=math.exp(lanzaflex)
+    lanzaflex=lanzaflex + random.randint(0,20)
     context.message.reply_text("Lanza sta sollevando " + str(lanzaflex) + " kg")
 
 def prato(update, context):
