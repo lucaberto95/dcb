@@ -1,6 +1,7 @@
 import logging
 from telegram.ext import Updater, CommandHandler, MessageHandler, BaseFilter
 import sys
+import os
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -96,7 +97,8 @@ def error(update, context):
 if __name__ == '__main__':
     # Getting mode, so we could define run function for local and Heroku setup
     mode = "dev"
-    TOKEN = "847018555:AAHOHfC7Nj7zLMEo5leHE2knXoLZpnoifv4"
+	TOKEN = os.environ.get('TOKEN')
+#    TOKEN = "847018555:AAHOHfC7Nj7zLMEo5leHE2knXoLZpnoifv4"
     updater = Updater(TOKEN)
     if mode == "dev":
         def run(updater):
