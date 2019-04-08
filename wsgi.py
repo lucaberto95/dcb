@@ -18,13 +18,13 @@
 # along with python-telegram-bot-openshift.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-import bot
+import Updater
 from flask import Flask, request
 from telegram import Update
 
 
 application = Flask(__name__, instance_path=os.environ['OPENSHIFT_REPO_DIR'])
-update_queue, bot_instance = bot.setup(webhook_url='https://{}/{}'.format(
+update_queue, bot_instance = update.setup(webhook_url='https://{}/{}'.format(
     os.environ['OPENSHIFT_GEAR_DNS'],
     bot.TOKEN
 ))

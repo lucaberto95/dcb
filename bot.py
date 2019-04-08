@@ -97,7 +97,7 @@ def error(update, context):
 if __name__ == '__main__':
     # Getting mode, so we could define run function for local and Heroku setup
     mode = "dev"
-	TOKEN = os.environ.get('TOKEN')
+	TOKEN = os.environ.get("TOKEN")
 #    TOKEN = "847018555:AAHOHfC7Nj7zLMEo5leHE2knXoLZpnoifv4"
     updater = Updater(TOKEN)
     if mode == "dev":
