@@ -24,7 +24,7 @@ from telegram import Update
 
 
 application = Flask(__name__, instance_path=os.environ['OPENSHIFT_REPO_DIR'])
-update_queue, bot_instance = update.setup())
+update_queue, bot_instance = update.setup()
 
 
 @application.route('/')
