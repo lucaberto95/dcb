@@ -24,7 +24,10 @@ from telegram import Update
 
 
 application = Flask(__name__, instance_path=os.environ['OPENSHIFT_REPO_DIR'])
-update_queue, bot_instance = update.setup()
+update_queue, bot_instance = bot.setup(webhook_url='https://{}/{}'.format(
+	os.environ['OPENSHIFT_GEAR_DNS'],
+    bot.TOKEN
+))
 
 
 @application.route('/')
