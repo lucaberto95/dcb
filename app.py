@@ -106,7 +106,7 @@ def max(update, context):
     context.message.reply_to_message.reply_text('Se continui Max ti riempie di Bot')
     
 def zaino(update, context):
-	context.message.reply_text("G I U L I A	T I 	A M O ! ! !")
+	context.message.reply_text("G I U L I A    T I     A M O ! ! !")
 
 def chatID(update, context):
 #    context.message.reply_text(context.message.reply_to_message.from_user.id)
