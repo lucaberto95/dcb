@@ -35,7 +35,7 @@ def start(update, context):
 def taccuino(update, context):
     listaoutSTR = list()
     for item in ammoniti:
-        if(ammoniti[item] == 'Furbetto'):
+        if(ammoniti[item] == None):
             listaoutSTR.append(str(item))
         else:
             listaoutSTR.append(str(ammoniti[item]))
@@ -69,7 +69,7 @@ def ammonito(update, context):
                     ammoniti[context.message.reply_to_message.from_user.id] = context.message.reply_to_message.from_user.last_name
                 else:
                     context.message.reply_text(str(context.message.reply_to_message.from_user.id) + " Pensava di fare il furbetto cancellando una parte delle sue informazioni, invece verra'  ammonito comunque! GIALLO!")
-                ammoniti[context.message.reply_to_message.from_user.id] = "Furbetto"
+                	ammoniti[context.message.reply_to_message.from_user.id] = None
     else:
         context.message.reply_text("Non sei amministratore, non ti devi permettere")
 
