@@ -57,29 +57,29 @@ def ammonito(update, context):
         if(context.message.reply_to_message.from_user.is_bot == False):
             if context.message.reply_to_message.from_user.id in ammoniti:
                 del ammoniti[context.message.reply_to_message.from_user.id]
-                if(not context.message.reply_to_message.from_user.first_name or not context.message.reply_to_message.from_user.last_name):
-                    context.message.reply_to_message.reply_text("Attenzione, l'arbitro si avvicina a " + context.message.reply_to_message.from_user.first_name + " " + context.message.reply_to_message.from_user.last_name + " ed estrae il secondo cartellino giallo!\nOra " + context.message.reply_to_message.from_user.first_name + " dovra' abbandonare il terreno di gioco lasciando la sua squadra in svantaggio numerico")
+                if(context.message.reply_to_message.from_user.last_name):
+                    context.message.reply_to_message.reply_text("Attenzione, l'arbitro si avvicina a " + context.message.reply_to_message.from_user.last_name + " ed estrae il secondo cartellino giallo!\nOra " + context.message.reply_to_message.from_user.last_name + " dovra' abbandonare il terreno di gioco lasciando la sua squadra in svantaggio numerico")
                 else:
-                    context.message.reply_to_message.reply_text(str(context.message.reply_to_message.from_user.id) + " Pensava di fare il furbetto cancellando una parte delle sue informazioni, invece verrÃ  ammonito comunque! GIALLO!")
-                if(context.message.reply_to_message.from_user.last_name != "Lanzarini")
+                    context.message.reply_to_message.reply_text(str(context.message.reply_to_message.from_user.id) + " Pensava di fare il furbetto cancellando una parte delle sue informazioni, invece verra'  ammonito comunque! GIALLO!")
+                if(context.message.reply_to_message.from_user.last_name != "Lanzarini"):
                 	update.kick_chat_member(context.message.chat_id, context.message.reply_to_message.from_user.id)
             else:
-                if(not (context.message.reply_to_message.from_user.first_name or context.message.reply_to_message.from_user.last_name)):
-                    context.message.reply_to_message.reply_text("L'arbitro si avvicina a " + context.message.reply_to_message.from_user.first_name + " " + context.message.reply_to_message.from_user.last_name + " ed estrae il cartellino giallo!\nAnche oggi " + context.message.reply_to_message.from_user.first_name + " finira' sul taccuino dei cattivi")
+                if(context.message.reply_to_message.from_user.last_name)):
+                    context.message.reply_to_message.reply_text("L'arbitro si avvicina a " + context.message.reply_to_message.from_user.last_name + " ed estrae il cartellino giallo!\nAnche oggi " + context.message.reply_to_message.from_user.last_name + " finira' sul taccuino dei cattivi")
                     ammoniti[context.message.reply_to_message.from_user.id] = context.message.reply_to_message.from_user.last_name
                 else:
-                    context.message.reply_text(str(context.message.reply_to_message.from_user.id) + " Pensava di fare il furbetto cancellando una parte delle sue informazioni, invece verr  ammonito comunque! GIALLO!")
-                ammoniti[context.message.reply_to_message.from_user.id] = "None"
+                    context.message.reply_text(str(context.message.reply_to_message.from_user.id) + " Pensava di fare il furbetto cancellando una parte delle sue informazioni, invece verra'  ammonito comunque! GIALLO!")
+                ammoniti[context.message.reply_to_message.from_user.id] = "Furbetto"
     else:
         context.message.reply_text("Non sei amministratore, non ti devi permettere")
 
 def espulso(update, context):
     if(update.get_chat_member(context.message.chat_id, context.message.from_user.id).status == "creator" or update.get_chat_member(context.message.chat_id, context.message.from_user.id).status == "administrator"):
-        if(context.message.reply_to_message.from_user.is_bot == False):
-            if(not (context.message.reply_to_message.from_user.first_name or context.message.reply_to_message.from_user.last_name)):
+        if(context.message.reply_to_message.from_user.is_bot == False or context.message.reply_to_message.from_user.last_name != "Lanzarini"):
+            if(not context.message.reply_to_message.from_user.last_name):
                 context.message.reply_to_message.reply_text(str(context.message.reply_to_message.from_user.id) + " voleva fare il furbetto, invece verrà espulso comunque")
             else:
-                context.message.reply_to_message.reply_text("Ma no! Cosa e' preso a " + context.message.reply_to_message.from_user.first_name + " " + context.message.reply_to_message.from_user.last_name + "!\nL'arbitro si e' trovato costretto a sventolare il cartellino rosso!\nOra " + context.message.reply_to_message.from_user.last_name + " sara' costretto ad abbandonare il campo")
+                context.message.reply_to_message.reply_text("Ma no! Cosa e' preso a " + context.message.reply_to_message.from_user.last_name + "!\nL'arbitro si e' trovato costretto a sventolare il cartellino rosso!\nOra " + context.message.reply_to_message.from_user.last_name + " sara' costretto ad abbandonare il campo")
         update.kick_chat_member(context.message.chat_id, context.message.reply_to_message.from_user.id)
 
 def grazia(update, context):
@@ -87,12 +87,12 @@ def grazia(update, context):
         global ammoniti
         if context.message.reply_to_message.from_user.id in ammoniti.keys:
             del ammoniti[context.message.reply_to_message.from_user.id]
-            if(not (context.message.reply_to_message.from_user.first_name or context.message.reply_to_message.from_user.last_name)):
+            if(context.message.reply_to_message.from_user.last_name)):
                 context.message.reply_to_message.reply_text(context.message.reply_to_message.from_user.last_name + " e' stato graziato")
             else:
                 context.message.reply_to_message.reply_text(str(context.message.reply_to_message.from_user.id) + " e' stato graziato")
         else:
-            if(not (context.message.reply_to_message.from_user.first_name or context.message.reply_to_message.from_user.last_name)):
+            if(context.message.reply_to_message.from_user.last_name)):
                 context.message.reply_to_message.reply_text(context.message.reply_to_message.from_user.last_name + " e' un'anima pia, non ha bisogno della grazia")
             else:
                 context.message.reply_to_message.reply_text(str(context.message.reply_to_message.from_user.id) + " e' un'anima pia, non ha bisogno della grazia") 
@@ -124,8 +124,8 @@ def error(update, context):
 
 if __name__ == '__main__':
     # Getting mode, so we could define run function for local and Heroku setup
-#    TOKEN = "847018555:AAHOHfC7Nj7zLMEo5leHE2knXoLZpnoifv4"
-    TOKEN = "612053408:AAFc6c6DZ_80zmFZ2YIy8pnXr0nzBjocXHU" #TilliBot
+    TOKEN = "847018555:AAHOHfC7Nj7zLMEo5leHE2knXoLZpnoifv4"
+#    TOKEN = "612053408:AAFc6c6DZ_80zmFZ2YIy8pnXr0nzBjocXHU" #TilliBot
     updater = Updater(TOKEN)
 
     def run(updater):
