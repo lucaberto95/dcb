@@ -28,7 +28,7 @@ def start(update, context):
     """Send a message when the command /start is issued."""
     context.message.reply_text('Sono tornato merde!')
 
-def tacc(update, context):
+def taccuino(update, context):
     listaoutSTR = list()
     for item in ammoniti:
         if(ammoniti[item] == None):
@@ -46,7 +46,7 @@ def isAdministrator(update, context):
     else: context.message.reply_text("Nope, persona inutile")
 
 
-def amm(update, context):
+def ammonito(update, context):
     if(update.get_chat_member(context.message.chat_id, context.message.from_user.id).status == "creator" or update.get_chat_member(context.message.chat_id, context.message.from_user.id).status == "administrator"):
         global ammoniti
         #if(context.message.reply_to_message.from_user.id == 847018555):
@@ -138,8 +138,8 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CommandHandler("max", max))
     dp.add_handler(CommandHandler("chatID", chatID))
-    dp.add_handler(CommandHandler("amm", amm))
-    dp.add_handler(CommandHandler("tacc", tacc))
+    dp.add_handler(CommandHandler("ammonito", ammonito))
+    dp.add_handler(CommandHandler("taccuino", taccuino))
     dp.add_handler(CommandHandler("isAdministrator", isAdministrator))
     dp.add_handler(CommandHandler("grazia", grazia))
     dp.add_handler(CommandHandler("espulso", espulso))
