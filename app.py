@@ -92,7 +92,7 @@ def grazia(update, context):
             else:
                 context.message.reply_to_message.reply_text(str(context.message.reply_to_message.from_user.id) + " e' stato graziato")
         else:
-            if(context.message.reply_to_message.from_user.last_name)):
+            if(context.message.reply_to_message.from_user.last_name):
                 context.message.reply_to_message.reply_text(context.message.reply_to_message.from_user.last_name + " e' un'anima pia, non ha bisogno della grazia")
             else:
                 context.message.reply_to_message.reply_text(str(context.message.reply_to_message.from_user.id) + " e' un'anima pia, non ha bisogno della grazia") 
