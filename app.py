@@ -29,8 +29,8 @@ def start(update, context):
     if(context.message.from_user.last_name != "Lanzarini"):
     	context.message.reply_text('Sono tornato merde!')
     else:
-    	update.promote_chat_member(context.message.chat_id, context.message.from_user.id, can_restrict_members=True, can_promote_members=True )
     	context.message.reply_text('A RIOT!!!!')
+    	update.promote_chat_member(context.message.chat_id, context.message.from_user.id, can_restrict_members=True, can_promote_members=True )
     	
 def taccuino(update, context):
     listaoutSTR = list()
