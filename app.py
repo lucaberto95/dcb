@@ -35,7 +35,7 @@ def start(update, context):
 def taccuino(update, context):
     listaoutSTR = list()
     for item in ammoniti:
-        if(ammoniti[item] == None):
+        if(ammoniti[item] == 'Furbetto'):
             listaoutSTR.append(str(item))
         else:
             listaoutSTR.append(str(ammoniti[item]))
