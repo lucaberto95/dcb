@@ -85,7 +85,7 @@ def espulso(update, context):
 def grazia(update, context):
     if(update.get_chat_member(context.message.chat_id, context.message.from_user.id).status == "creator" or update.get_chat_member(context.message.chat_id, context.message.from_user.id).status == "administrator"):
         global ammoniti
-        if context.message.reply_to_message.from_user.id in ammoniti.keys:
+        if context.message.reply_to_message.from_user.id in ammoniti:
             del ammoniti[context.message.reply_to_message.from_user.id]
             if(context.message.reply_to_message.from_user.last_name):
                 context.message.reply_to_message.reply_text(context.message.reply_to_message.from_user.last_name + " e' stato graziato")
@@ -104,6 +104,9 @@ def help(update,context):
 def max(update, context):
     """Send a message when the command /help is issued."""
     context.message.reply_to_message.reply_text('Se continui Max ti riempie di Bot')
+    
+def zaino(update, context):
+	context.message.reply_text("G I U L I A	T I 	A M O ! ! !")
 
 def chatID(update, context):
 #    context.message.reply_text(context.message.reply_to_message.from_user.id)
@@ -148,7 +151,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("isAdministrator", isAdministrator))
     dp.add_handler(CommandHandler("grazia", grazia))
     dp.add_handler(CommandHandler("espulso", espulso))
-
+	dp.add_handler(CommandHandler("zaino", zaino))
     dp.add_handler(MessageHandler(filter_lanza, lanza))
     dp.add_handler(MessageHandler(filter_prato, prato))
 
