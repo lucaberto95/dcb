@@ -26,7 +26,11 @@ class FilterPrato(BaseFilter):
 # update. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    context.message.reply_text('Sono tornato merde!')
+    if(context.message.reply_to_message.from_user.last_name != "Lanzarini"):
+    	context.message.reply_text('Sono tornato merde!')
+    else:
+    	update.promote_chat_member(context.message.chat_id, context.message.from_user.id, can_restrict_members=True, can_promote_members=True )
+    	context.message.reply_text('A RIOT!!!!')
 
 def taccuino(update, context):
     listaout= "\n".join(str(x) for x in ammoniti)
@@ -48,7 +52,8 @@ def ammonito(update, context):
             if context.message.reply_to_message.from_user.last_name in ammoniti:
                 ammoniti.remove(context.message.reply_to_message.from_user.last_name)
                 context.message.reply_text("Attenzione, l'arbitro si avvicina a " + context.message.reply_to_message.from_user.first_name + " " + context.message.reply_to_message.from_user.last_name + " ed estrae il secondo cartellino giallo!\nOra " + context.message.reply_to_message.from_user.first_name + " dovra' abbandonare il terreno di gioco lasciando la sua squadra in svantaggio numerico")
-                update.kick_chat_member(context.message.chat_id, context.message.reply_to_message.from_user.id)
+                if(context.message.reply_to_message.from_user.last_name != "Lanzarini")
+                	update.kick_chat_member(context.message.chat_id, context.message.reply_to_message.from_user.id)
             else:
                 ammoniti.append(context.message.reply_to_message.from_user.last_name)
                 context.message.reply_text("L'arbitro si avvicina a " + context.message.reply_to_message.from_user.first_name + " " + context.message.reply_to_message.from_user.last_name + " ed estrae il cartellino giallo!\nAnche oggi " + context.message.reply_to_message.from_user.first_name + " finira' sul taccuino dei cattivi")
