@@ -106,8 +106,8 @@ def max(update, context):
     context.message.reply_to_message.reply_text('Se continui Max ti riempie di Bot')
     
 def zaino(update, context):
-	context.message.reply_text("G I U L I A    T I     A M O ! ! !")
-
+	context.message.reply_text("GIULIA TI AMO!! SEI TUTTO PER ME, SPOSAMI NOOW!!!!!")
+	
 def chatID(update, context):
 #    context.message.reply_text(context.message.reply_to_message.from_user.id)
     context.message.reply_text("Ciao, " + context.message.from_user.first_name + "!\nIl tuo chat id in questo gruppo e' " +  str(context.message.from_user.id))
@@ -151,8 +151,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("isAdministrator", isAdministrator))
     dp.add_handler(CommandHandler("grazia", grazia))
     dp.add_handler(CommandHandler("espulso", espulso))
-	dp.add_handler(CommandHandler("zaino", zaino))
-	
+    dp.add_handler(CommandHandler("zaino", zaino))
     dp.add_handler(MessageHandler(filter_lanza, lanza))
     dp.add_handler(MessageHandler(filter_prato, prato))
 
