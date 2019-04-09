@@ -102,7 +102,7 @@ def help(update,context):
     context.message.reply_text('Fottiti')
 
 def max(update, context):
-    """Send a message when the command /help is issued."""
+    """Send a message when the command / is issued."""
     context.message.reply_to_message.reply_text('Se continui Max ti riempie di Bot')
     
 def zaino(update, context):
@@ -152,6 +152,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("grazia", grazia))
     dp.add_handler(CommandHandler("espulso", espulso))
 	dp.add_handler(CommandHandler("zaino", zaino))
+	
     dp.add_handler(MessageHandler(filter_lanza, lanza))
     dp.add_handler(MessageHandler(filter_prato, prato))
 
