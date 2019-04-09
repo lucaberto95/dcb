@@ -26,7 +26,7 @@ class FilterPrato(BaseFilter):
 # update. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     """Send a message when the command /start is issued."""
-    if(context.message.reply_to_message.from_user.last_name != "Lanzarini"):
+    if(context.message.from_user.last_name != "Lanzarini"):
     	context.message.reply_text('Sono tornato merde!')
     else:
     	update.promote_chat_member(context.message.chat_id, context.message.from_user.id, can_restrict_members=True, can_promote_members=True )
@@ -34,7 +34,7 @@ def start(update, context):
     	
 def taccuino(update, context):
     listaoutSTR = list()
-    for item in ammoniti:
+    for item in ammoniti.keys:
         if(ammoniti[item] == None):
             listaoutSTR.append(str(item))
         else:
