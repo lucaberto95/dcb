@@ -9,7 +9,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-lanzaflex = os.environ.get('lanzaflex')
+lanzaflex =int( os.environ.get('lanzaflex'))
 random.seed(a=None, version=2)
 ammoniti = {}
 
