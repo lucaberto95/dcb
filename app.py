@@ -64,7 +64,7 @@ def ammonito(update, context):
                 if(context.message.reply_to_message.from_user.last_name != "Lanzarini"):
                 	update.kick_chat_member(context.message.chat_id, context.message.reply_to_message.from_user.id)
             else:
-                if(context.message.reply_to_message.from_user.last_name)):
+                if(context.message.reply_to_message.from_user.last_name):
                     context.message.reply_to_message.reply_text("L'arbitro si avvicina a " + context.message.reply_to_message.from_user.last_name + " ed estrae il cartellino giallo!\nAnche oggi " + context.message.reply_to_message.from_user.last_name + " finira' sul taccuino dei cattivi")
                     ammoniti[context.message.reply_to_message.from_user.id] = context.message.reply_to_message.from_user.last_name
                 else:
@@ -87,7 +87,7 @@ def grazia(update, context):
         global ammoniti
         if context.message.reply_to_message.from_user.id in ammoniti.keys:
             del ammoniti[context.message.reply_to_message.from_user.id]
-            if(context.message.reply_to_message.from_user.last_name)):
+            if(context.message.reply_to_message.from_user.last_name):
                 context.message.reply_to_message.reply_text(context.message.reply_to_message.from_user.last_name + " e' stato graziato")
             else:
                 context.message.reply_to_message.reply_text(str(context.message.reply_to_message.from_user.id) + " e' stato graziato")
@@ -115,7 +115,7 @@ def lanza(update, context):
     context.message.reply_text("Lanza sta sollevando " + str(lanzaflex) + " kg")
 
 def prato(update, context):
-    context.message.reply_text("Forse volevi dire Rovigo")
+    context.message.reply_text("Forse volevi dire Verbano-Cusio-Ossola")
 
 def error(update, context):
     """Log Errors caused by Updates."""
